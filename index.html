@@ -11,13 +11,11 @@
             --primary: #2563eb;
             --primary-foreground: #ffffff;
             --secondary: #f3f4f6;
-            --muted: #e5e7eb;
-            --muted-foreground: #6b7280;
-            --accent: #e5e7eb;
-            --accent-foreground: #1f2937;
+            --muted: #6b7280;
+            --muted-foreground: #9ca3af;
             --background: #ffffff;
-            --border: #d1d5db;
-            --ring: #2563eb;
+            --shadow-neon: 0 0 10px rgba(37, 99, 235, 0.5);
+            --border: #e5e7eb;
         }
 
         * {
@@ -27,141 +25,16 @@
         }
 
         body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
             background: var(--background);
             color: #1f2937;
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 1536px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 1rem;
-        }
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            width: 100%;
-            border-bottom: 1px solid var(--border);
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
-
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 3.5rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 700;
-            font-size: 1.25rem;
-            color: var(--primary);
-            text-shadow: 0 0 8px var(--primary);
-        }
-
-        .logo svg {
-            width: 1.75rem;
-            height: 1.75rem;
-            stroke: var(--primary);
-        }
-
-        nav {
-            display: none;
-        }
-
-        .nav-mobile {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            position: fixed;
-            top: 3.5rem;
-            left: 0;
-            width: 100%;
-            max-width: 300px;
-            background: var(--background);
-            padding: 2rem 1rem;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        #menu-toggle:checked ~ .nav-mobile {
-            transform: translateX(0);
-        }
-
-        .nav-mobile a {
-            color: var(--muted-foreground);
-            text-decoration: none;
-            font-size: 1rem;
-            padding: 0.5rem 0;
-            transition: color 0.3s;
-        }
-
-        .nav-mobile a:hover {
-            color: var(--primary);
-        }
-
-        .menu-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.5rem;
-            border-radius: 0.375rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-
-        .menu-button svg {
-            width: 1.25rem;
-            height: 1.25rem;
-            stroke: currentColor;
-        }
-
-        .action-buttons {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .action-buttons a, .action-buttons button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        .action-buttons a.login {
-            background: var(--primary);
-            color: var(--primary-foreground);
-        }
-
-        .action-buttons a.login:hover {
-            background: #1d4ed8;
-        }
-
-        .action-buttons a.register {
-            border: 1px solid var(--border);
-            background: var(--background);
-            color: var(--accent-foreground);
-        }
-
-        .action-buttons a.register:hover {
-            background: var(--accent);
         }
 
         main {
@@ -170,59 +43,467 @@
             min-height: 100vh;
         }
 
+        /* Hero Section */
         .hero {
+            padding: 4rem 1rem;
             background: rgba(243, 244, 246, 0.5);
-            padding: 4rem 0;
         }
 
-        .hero-content {
+        .hero .grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 2rem;
             align-items: center;
         }
 
-        .hero-text h1 {
+        @media (min-width: 768px) {
+            .hero .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .hero h1 {
             font-size: 2.25rem;
             font-weight: 700;
             color: var(--primary);
-            text-shadow: 0 0 8px var(--primary);
+            text-shadow: var(--shadow-neon);
             margin-bottom: 1.5rem;
         }
 
-        .hero-text p {
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero h1 {
+                font-size: 3.75rem;
+            }
+        }
+
+        .hero p {
             font-size: 1.125rem;
             color: var(--muted-foreground);
             margin-bottom: 2rem;
         }
 
-        .hero-buttons {
+        @media (min-width: 768px) {
+            .hero p {
+                font-size: 1.25rem;
+            }
+        }
+
+        .hero .buttons {
             display: flex;
             gap: 1rem;
-        }
-
-        .features, .testimonials {
-            padding: 4rem 0;
-        }
-
-        .features h2, .testimonials h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            text-align: center;
             margin-bottom: 2rem;
         }
 
-        .feature-list, .testimonial-list {
-            display: grid;
+        .hero button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .hero .login {
+            background: var(--primary);
+            color: var(--primary-foreground);
+            border: none;
+        }
+
+        .hero .login:hover {
+            background: #1d4ed8;
+        }
+
+        .hero .register {
+            background: var(--background);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .hero .register:hover {
+            background: #f3f4f6;
+        }
+
+        .hero .dog {
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero .dog {
+                display: flex;
+            }
+        }
+
+        .hero .dog svg {
+            width: 12rem;
+            height: 12rem;
+            stroke: var(--primary);
+            opacity: 0.75;
+            stroke-width: 1.5;
+        }
+
+        @media (min-width: 1024px) {
+            .hero .dog svg {
+                width: 16rem;
+                height: 16rem;
+            }
+        }
+
+        /* Carousel Section */
+        .carousel {
+            padding: 3rem 1rem;
+            background: var(--background);
+        }
+
+        .carousel h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: var(--shadow-neon);
+            margin-bottom: 2rem;
+        }
+
+        .carousel .card {
+            max-width: 75rem;
+            margin: 0 auto;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+        }
+
+        .carousel .card-content {
+            position: relative;
+            aspect-ratio: 2 / 1;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .carousel .overlay h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-foreground);
+            margin-bottom: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .carousel .overlay h3 {
+                font-size: 2rem;
+            }
+        }
+
+        .carousel .overlay p {
+            font-size: 1rem;
+            color: #d1d5db;
+        }
+
+        @media (min-width: 768px) {
+            .carousel .overlay p {
+                font-size: 1.125rem;
+            }
+        }
+
+        .carousel .arrows button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 9999px;
+            border: 1px solid rgba(37, 99, 235, 0.5);
+            color: var(--primary);
+            background: transparent;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .carousel .arrows button:hover {
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .carousel .arrows .prev {
+            left: 0.5rem;
+        }
+
+        .carousel .arrows .next {
+            right: 0.5rem;
+        }
+
+        .carousel .arrows svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .carousel .dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .carousel .dots button {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 9999px;
+            background: rgba(37, 99, 235, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .carousel .dots button:hover {
+            background: rgba(37, 99, 235, 0.5);
+        }
+
+        .carousel .dots .active {
+            background: var(--primary);
+            box-shadow: var(--shadow-neon);
+        }
+
+        /* Why This App Section */
+        .why-this-app {
+            padding: 3rem 1rem;
+            background: rgba(243, 244, 246, 0.5);
+        }
+
+        .why-this-app .card {
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .why-this-app .card:hover {
+            border-color: rgba(37, 99, 235, 0.6);
+            box-shadow: var(--shadow-neon);
+        }
+
+        .why-this-app .card-header {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .why-this-app .card-header h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: var(--shadow-neon);
+        }
+
+        .why-this-app .card-content {
+            padding: 2rem 4rem;
+            min-height: 25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             gap: 1.5rem;
         }
 
-        .feature-item, .testimonial-item {
-            padding: 1rem;
-            background: var(--muted);
-            border-radius: 0.375rem;
+        .why-this-app p {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            text-align: center;
+            max-width: 48rem;
         }
 
+        .why-this-app .features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .why-this-app .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .why-this-app .features {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .why-this-app .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: var(--background);
+            border-radius: 0.375rem;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-this-app .feature svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: var(--primary);
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+            text-shadow: var(--shadow-neon);
+        }
+
+        .why-this-app .feature p {
+            text-align: left;
+        }
+
+        .why-this-app .arrows button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 9999px;
+            border: 1px solid rgba(37, 99, 235, 0.5);
+            color: var(--primary);
+            background: transparent;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .why-this-app .arrows .prev {
+            left: 1rem;
+        }
+
+        .why-this-app .arrows .next {
+            right: 1rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 3rem 1rem;
+            background: var(--background);
+        }
+
+        .testimonials h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: var(--shadow-neon);
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .testimonials .scroll-container {
+            display: flex;
+            gap: 1.5rem;
+            padding-bottom: 1rem;
+            overflow-x: auto;
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .testimonials .scroll-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .testimonials .card {
+            min-width: 17.5rem;
+            flex-shrink: 0;
+            border: 1px solid transparent;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .testimonials .card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-neon);
+        }
+
+        .testimonials .card-header {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .testimonials .avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        .testimonials .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonials .card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        .testimonials .rating {
+            display: flex;
+            gap: 0.125rem;
+        }
+
+        .testimonials .rating svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .testimonials .rating .filled {
+            color: #facc15;
+            fill: #facc15;
+        }
+
+        .testimonials .card-content {
+            padding: 1rem;
+        }
+
+        .testimonials .card-content p {
+            font-style: italic;
+            color: var(--muted-foreground);
+        }
+
+        .testimonials .arrows button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 9999px;
+            border: 1px solid rgba(37, 99, 235, 0.5);
+            color: var(--primary);
+            background: transparent;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .testimonials .arrows .prev {
+            left: 0;
+        }
+
+        .testimonials .arrows .next {
+            right: 0;
+        }
+
+        /* Footer */
         footer {
             padding: 2rem 0;
             background: var(--muted);
@@ -231,168 +512,214 @@
         }
 
         footer p {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
-        @media (min-width: 768px) {
-            .menu-button {
-                display: none;
-            }
-
-            nav {
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-            }
-
-            .nav-mobile {
-                display: none;
-            }
-
-            .header-content {
-                padding: 0 1.5rem;
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .hero-text h1 {
-                font-size: 3rem;
-            }
-
-            .hero-text p {
-                font-size: 1.25rem;
-            }
-
-            .hero-svg {
-                display: flex;
-                justify-content: center;
-            }
-
-            .hero-svg svg {
-                width: 12rem;
-                height: 12rem;
-                stroke: var(--primary);
-                opacity: 0.75;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .hero-text h1 {
-                font-size: 3.75rem;
-            }
-
-            .hero-svg svg {
-                width: 16rem;
-                height: 16rem;
-            }
+        footer .text-sm {
+            font-size: 0.875rem;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container header-content">
-            <a href="/" class="logo">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house">
-                    <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
-                    <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                </svg>
-                <span>IAPES Prep</span>
-            </a>
-            <input type="checkbox" id="menu-toggle" style="display: none;">
-            <label for="menu-toggle" class="menu-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
-                    <line x1="4" x2="20" y1="12" y2="12"></line>
-                    <line x1="4" x2="20" y1="6" y2="6"></line>
-                    <line x1="4" x2="20" y1="18" y2="18"></line>
-                </svg>
-                <span class="sr-only">Toggle Menu</span>
-            </label>
-            <nav class="nav-mobile">
-                <a href="/login">Login</a>
-                <a href="/register">Register</a>
-            </nav>
-            <nav>
-                <a href="/" class="logo">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house">
-                        <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
-                        <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                    </svg>
-                    <span>IAPES Prep</span>
-                </a>
-                <div class="action-buttons">
-                    <a href="/login" class="login">Login</a>
-                    <a href="/register" class="register">Register</a>
-                </div>
-            </nav>
-        </div>
-    </header>
     <main>
+        <!-- Hero Section -->
         <section class="hero">
-            <div class="container hero-content">
-                <div class="hero-text">
-                    <h1>Unlock Your ICFES Potential</h1>
-                    <p>Your Slogan Here: Master the Pre-ICFES Saber 11 with IAPES Prep. Personalized feedback and expert guidance.</p>
-                    <div class="hero-buttons">
-                        <a href="/login" class="login">Login</a>
-                        <a href="/register" class="register">Register</a>
+            <div class="container">
+                <div class="grid">
+                    <div>
+                        <h1>Unlock Your ICFES Potential</h1>
+                        <p>Your Slogan Here: Master the Pre-ICFES Saber 11 with IAPES Prep. Personalized feedback and expert guidance.</p>
+                        <div class="buttons">
+                            <a href="/login"><button class="login">Login</button></a>
+                            <a href="/register"><button class="register">Register</button></a>
+                        </div>
+                    </div>
+                    <div class="dog">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11.25 16.25h1.5L12 17z"/>
+                            <path d="M16 14v.5"/>
+                            <path d="M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444a11.702 11.702 0 0 0-.493-3.309"/>
+                            <path d="M8 14v.5"/>
+                            <path d="M8.5 8.5c-.384 1.05-1.083 2.028-2.344 2.5-1.931.722-3.576-.297-3.656-1-.113-.994 1.177-6.53 4-7 1.923-.321 3.651.845 3.651 2.235A7.497 7.497 0 0 1 14 5.277c0-1.39 1.844-2.598 3.767-2.277 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5"/>
+                        </svg>
                     </div>
                 </div>
-                <div class="hero-svg">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dog">
-                        <path d="M11.25 16.25h1.5L12 17z"></path>
-                        <path d="M16 14v.5"></path>
-                        <path d="M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444a11.702 11.702 0 0 0-.493-3.309"></path>
-                        <path d="M8 14v.5"></path>
-                        <path d="M8.5 8.5c-.384 1.05-1.083 2.028-2.344 2.5-1.931.722-3.576-.297-3.656-1-.113-.994 1.177-6.53 4-7 1.923-.321 3.651.845 3.651 2.235A7.497 7.497 0 0 1 14 5.277c0-1.39 1.844-2.598 3.767-2.277 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5"></path>
-                    </svg>
-                </div>
             </div>
         </section>
-        <section class="features">
+
+        <!-- Carousel Section -->
+        <section class="carousel">
             <div class="container">
                 <h2>Discover Our Features</h2>
-                <p>Loading Carousel...</p>
-                <div class="feature-list">
-                    <div class="feature-item">Realistic ICFES Saber 11 simulations.</div>
-                    <div class="feature-item">AI-powered personalized feedback to pinpoint improvement areas.</div>
-                    <div class="feature-item">Comprehensive question bank covering all subjects.</div>
-                    <div class="feature-item">Track your progress with detailed analytics.</div>
-                    <div class="feature-item">Flexible study plans tailored to your needs.</div>
-                    <div class="feature-item">User-friendly interface accessible on all devices.</div>
+                <div class="card">
+                    <div class="card-content">
+                        <img src="https://placehold.co/800x400.png" alt="Interactive Simulations" data-ai-hint="study learning"/>
+                        <div class="overlay">
+                            <h3>Interactive Simulations</h3>
+                            <p>Experience real test conditions with our advanced simulations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="arrows">
+                    <button class="prev" aria-label="Previous slide">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+                    <button class="next" aria-label="Next slide">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
+                </div>
+                <div class="dots">
+                    <button class="active" aria-label="Go to slide 1"></button>
+                    <button aria-label="Go to slide 2"></button>
+                    <button aria-label="Go to slide 3"></button>
                 </div>
             </div>
         </section>
+
+        <!-- Why This App Section -->
+        <section class="why-this-app">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Why Choose IAPES Prep?</h2>
+                    </div>
+                    <div class="card-content">
+                        <p>IAPES Prep is more than just a test simulator. We are your dedicated partner in achieving success in the ICFES Saber 11 exam. Our platform is designed to provide you with the tools, insights, and support you need to excel.</p>
+                        <div class="features">
+                            <div class="feature">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                <p>Realistic ICFES Saber 11 simulations.</p>
+                            </div>
+                            <div class="feature">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                <p>AI-powered personalized feedback to pinpoint improvement areas.</p>
+                            </div>
+                            <div class="feature">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                <p>Comprehensive question bank covering all subjects.</p>
+                            </div>
+                            <div class="feature">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                <p>Track your progress with detailed analytics.</p>
+                            </div>
+                            <div class="feature">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                <p>Flexible study plans tailored to your needs.</p>
+                            </div>
+                            <div class="feature">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                <p>User-friendly interface accessible on all devices.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="arrows">
+                        <button class="prev" aria-label="Previous panel"></button>
+                        <button class="next" aria-label="Next panel"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
         <section class="testimonials">
             <div class="container">
                 <h2>What Our Users Say</h2>
-                <div class="testimonial-list">
-                    <div class="testimonial-item">
-                        <p>"IAPES Prep helped me identify my weaknesses and improve my scores significantly. The AI feedback is amazing!"</p>
-                        <p><strong>Laura V.</strong></p>
+                <div class="scroll-container">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="avatar">
+                                <img src="https://placehold.co/40x40.png" alt="Laura V." data-ai-hint="person woman"/>
+                            </div>
+                            <div>
+                                <h3 class="card-title">Laura V.</h3>
+                                <div class="rating">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <p>"IAPES Prep helped me identify my weaknesses and improve my scores significantly. The AI feedback is amazing!"</p>
+                        </div>
                     </div>
-                    <div class="testimonial-item">
-                        <p>"The simulations are very realistic. I felt much more confident on test day. Highly recommend this platform."</p>
-                        <p><strong>Carlos R.</strong></p>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="avatar">
+                                <img src="https://placehold.co/40x40.png" alt="Carlos R." data-ai-hint="person man"/>
+                            </div>
+                            <div>
+                                <h3 class="card-title">Carlos R.</h3>
+                                <div class="rating">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <p>"The simulations are very realistic. I felt much more confident on test day. Highly recommend this platform."</p>
+                        </div>
                     </div>
-                    <div class="testimonial-item">
-                        <p>"An excellent tool for ICFES preparation. The content is thorough and the platform is easy to use."</p>
-                        <p><strong>Sofia M.</strong></p>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="avatar">
+                                <img src="https://placehold.co/40x40.png" alt="Sofia M." data-ai-hint="person student"/>
+                            </div>
+                            <div>
+                                <h3 class="card-title">Sofia M.</h3>
+                                <div class="rating">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <p>"An excellent tool for ICFES preparation. The content is thorough and the platform is easy to use."</p>
+                        </div>
                     </div>
-                    <div class="testimonial-item">
-                        <p>"Great value for money. The personalized recommendations made a huge difference in my study strategy."</p>
-                        <p><strong>Juan P.</strong></p>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="avatar">
+                                <img src="https://placehold.co/40x40.png" alt="Juan P." data-ai-hint="person male"/>
+                            </div>
+                            <div>
+                                <h3 class="card-title">Juan P.</h3>
+                                <div class="rating">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <p>"Great value for money. The personalized recommendations made a huge difference in my study strategy."</p>
+                        </div>
                     </div>
+                </div>
+                <div class="arrows">
+                    <button class="prev" aria-label="Previous testimonial"></button>
+                    <button class="next" aria-label="Next testimonial"></button>
                 </div>
             </div>
         </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <p>© 2025 IAPES Prep. All rights reserved.</p>
+                <p class="text-sm">Your partner for ICFES Saber 11 success.</p>
+            </div>
+        </footer>
     </main>
-    <footer>
-        <div class="container">
-            <p>© 2025 IAPES Prep. All rights reserved.</p>
-            <p class="text-sm">Your partner for ICFES Saber 11 success.</p>
-        </div>
-    </footer>
 </body>
 </html>
