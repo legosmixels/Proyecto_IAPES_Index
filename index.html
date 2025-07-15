@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAPES Prep - Pre-ICFES Simulator</title>
+    <meta name="description" content="Your partner in preparing for the ICFES Saber 11 test.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-foreground: #ffffff;
+            --secondary: #f3f4f6;
+            --muted: #e5e7eb;
+            --muted-foreground: #6b7280;
+            --accent: #e5e7eb;
+            --accent-foreground: #1f2937;
+            --background: #ffffff;
+            --border: #d1d5db;
+            --ring: #2563eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: var(--background);
+            color: #1f2937;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1536px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            width: 100%;
+            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 3.5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary);
+            text-shadow: 0 0 8px var(--primary);
+        }
+
+        .logo svg {
+            width: 1.75rem;
+            height: 1.75rem;
+            stroke: var(--primary);
+        }
+
+        nav {
+            display: none;
+        }
+
+        .nav-mobile {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            position: fixed;
+            top: 3.5rem;
+            left: 0;
+            width: 100%;
+            max-width: 300px;
+            background: var(--background);
+            padding: 2rem 1rem;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #menu-toggle:checked ~ .nav-mobile {
+            transform: translateX(0);
+        }
+
+        .nav-mobile a {
+            color: var(--muted-foreground);
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        .nav-mobile a:hover {
+            color: var(--primary);
+        }
+
+        .menu-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .menu-button svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            stroke: currentColor;
+        }
+
+        .action-buttons {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .action-buttons a, .action-buttons button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .action-buttons a.login {
+            background: var(--primary);
+            color: var(--primary-foreground);
+        }
+
+        .action-buttons a.login:hover {
+            background: #1d4ed8;
+        }
+
+        .action-buttons a.register {
+            border: 1px solid var(--border);
+            background: var(--background);
+            color: var(--accent-foreground);
+        }
+
+        .action-buttons a.register:hover {
+            background: var(--accent);
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .hero {
+            background: rgba(243, 244, 246, 0.5);
+            padding: 4rem 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: 0 0 8px var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .features, .testimonials {
+            padding: 4rem 0;
+        }
+
+        .features h2, .testimonials h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .feature-list, .testimonial-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .feature-item, .testimonial-item {
+            padding: 1rem;
+            background: var(--muted);
+            border-radius: 0.375rem;
+        }
+
+        footer {
+            padding: 2rem 0;
+            background: var(--muted);
+            color: var(--muted-foreground);
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .menu-button {
+                display: none;
+            }
+
+            nav {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .nav-mobile {
+                display: none;
+            }
+
+            .header-content {
+                padding: 0 1.5rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .hero-text p {
+                font-size: 1.25rem;
+            }
+
+            .hero-svg {
+                display: flex;
+                justify-content: center;
+            }
+
+            .hero-svg svg {
+                width: 12rem;
+                height: 12rem;
+                stroke: var(--primary);
+                opacity: 0.75;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-text h1 {
+                font-size: 3.75rem;
+            }
+
+            .hero-svg svg {
+                width: 16rem;
+                height: 16rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="/" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house">
+                    <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
+                    <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                </svg>
+                <span>IAPES Prep</span>
+            </a>
+            <input type="checkbox" id="menu-toggle" style="display: none;">
+            <label for="menu-toggle" class="menu-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+                <span class="sr-only">Toggle Menu</span>
+            </label>
+            <nav class="nav-mobile">
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            </nav>
+            <nav>
+                <a href="/" class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house">
+                        <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
+                        <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    </svg>
+                    <span>IAPES Prep</span>
+                </a>
+                <div class="action-buttons">
+                    <a href="/login" class="login">Login</a>
+                    <a href="/register" class="register">Register</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>Unlock Your ICFES Potential</h1>
+                    <p>Your Slogan Here: Master the Pre-ICFES Saber 11 with IAPES Prep. Personalized feedback and expert guidance.</p>
+                    <div class="hero-buttons">
+                        <a href="/login" class="login">Login</a>
+                        <a href="/register" class="register">Register</a>
+                    </div>
+                </div>
+                <div class="hero-svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dog">
+                        <path d="M11.25 16.25h1.5L12 17z"></path>
+                        <path d="M16 14v.5"></path>
+                        <path d="M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444a11.702 11.702 0 0 0-.493-3.309"></path>
+                        <path d="M8 14v.5"></path>
+                        <path d="M8.5 8.5c-.384 1.05-1.083 2.028-2.344 2.5-1.931.722-3.576-.297-3.656-1-.113-.994 1.177-6.53 4-7 1.923-.321 3.651.845 3.651 2.235A7.497 7.497 0 0 1 14 5.277c0-1.39 1.844-2.598 3.767-2.277 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5"></path>
+                    </svg>
+                </div>
+            </div>
+        </section>
+        <section class="features">
+            <div class="container">
+                <h2>Discover Our Features</h2>
+                <p>Loading Carousel...</p>
+                <div class="feature-list">
+                    <div class="feature-item">Realistic ICFES Saber 11 simulations.</div>
+                    <div class="feature-item">AI-powered personalized feedback to pinpoint improvement areas.</div>
+                    <div class="feature-item">Comprehensive question bank covering all subjects.</div>
+                    <div class="feature-item">Track your progress with detailed analytics.</div>
+                    <div class="feature-item">Flexible study plans tailored to your needs.</div>
+                    <div class="feature-item">User-friendly interface accessible on all devices.</div>
+                </div>
+            </div>
+        </section>
+        <section class="testimonials">
+            <div class="container">
+                <h2>What Our Users Say</h2>
+                <div class="testimonial-list">
+                    <div class="testimonial-item">
+                        <p>"IAPES Prep helped me identify my weaknesses and improve my scores significantly. The AI feedback is amazing!"</p>
+                        <p><strong>Laura V.</strong></p>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"The simulations are very realistic. I felt much more confident on test day. Highly recommend this platform."</p>
+                        <p><strong>Carlos R.</strong></p>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"An excellent tool for ICFES preparation. The content is thorough and the platform is easy to use."</p>
+                        <p><strong>Sofia M.</strong></p>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"Great value for money. The personalized recommendations made a huge difference in my study strategy."</p>
+                        <p><strong>Juan P.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>© 2025 IAPES Prep. All rights reserved.</p>
+            <p class="text-sm">Your partner for ICFES Saber 11 success.</p>
+        </div>
+    </footer>
+</body>
+</html>
