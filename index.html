@@ -3,723 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAPES Prep - Pre-ICFES Simulator</title>
-    <meta name="description" content="Your partner in preparing for the ICFES Saber 11 test.">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16">
+    <title>Daniel Oliveros</title>
     <style>
-        :root {
-            --primary: #2563eb;
-            --primary-foreground: #ffffff;
-            --secondary: #f3f4f6;
-            --muted: #6b7280;
-            --muted-foreground: #9ca3af;
-            --background: #ffffff;
-            --shadow-neon: 0 0 10px rgba(37, 99, 235, 0.5);
-            --border: #e5e7eb;
-        }
-
-        * {
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1f2e;
+            color: #fff;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
-            background: var(--background);
-            color: #1f2937;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        main {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 4rem 1rem;
-            background: rgba(243, 244, 246, 0.5);
-        }
-
-        .hero .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        @media (min-width: 768px) {
-            .hero .grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .hero h1 {
-            font-size: 2.25rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-shadow: var(--shadow-neon);
-            margin-bottom: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .hero h1 {
-                font-size: 2.75rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .hero h1 {
-                font-size: 3.75rem;
-            }
-        }
-
-        .hero p {
-            font-size: 1.125rem;
-            color: var(--muted-foreground);
-            margin-bottom: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .hero p {
-                font-size: 1.25rem;
-            }
-        }
-
-        .hero .buttons {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .hero button {
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.375rem;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .hero .login {
-            background: var(--primary);
-            color: var(--primary-foreground);
-            border: none;
-        }
-
-        .hero .login:hover {
-            background: #1d4ed8;
-        }
-
-        .hero .register {
-            background: var(--background);
-            border: 1px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .hero .register:hover {
-            background: #f3f4f6;
-        }
-
-        .hero .dog {
-            display: none;
-            justify-content: center;
-            align-items: center;
-        }
-
-        @media (min-width: 768px) {
-            .hero .dog {
-                display: flex;
-            }
-        }
-
-        .hero .dog svg {
-            width: 12rem;
-            height: 12rem;
-            stroke: var(--primary);
-            opacity: 0.75;
-            stroke-width: 1.5;
-        }
-
-        @media (min-width: 1024px) {
-            .hero .dog svg {
-                width: 16rem;
-                height: 16rem;
-            }
-        }
-
-        /* Carousel Section */
-        .carousel {
-            padding: 3rem 1rem;
-            background: var(--background);
-        }
-
-        .carousel h2 {
-            font-size: 1.875rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-shadow: var(--shadow-neon);
-            margin-bottom: 2rem;
-        }
-
-        .carousel .card {
-            max-width: 75rem;
-            margin: 0 auto;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 0.5rem;
-        }
-
-        .carousel .card-content {
-            position: relative;
-            aspect-ratio: 2 / 1;
-        }
-
-        .carousel img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .carousel .overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
             text-align: center;
         }
-
-        .carousel .overlay h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary-foreground);
-            margin-bottom: 0.5rem;
+        .header {
+            padding: 50px 0;
+            background: url('https://via.placeholder.com/1200x400') no-repeat center center;
+            background-size: cover;
         }
-
-        @media (min-width: 768px) {
-            .carousel .overlay h3 {
-                font-size: 2rem;
-            }
+        .header h1 {
+            color: #ff4d4d;
+            font-size: 3em;
+            margin: 0;
         }
-
-        .carousel .overlay p {
-            font-size: 1rem;
-            color: #d1d5db;
+        .header p {
+            color: #ccc;
         }
-
-        @media (min-width: 768px) {
-            .carousel .overlay p {
-                font-size: 1.125rem;
-            }
+        .scroll-down {
+            color: #ccc;
+            margin-top: 10px;
         }
-
-        .carousel .arrows button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            border-radius: 9999px;
-            border: 1px solid rgba(37, 99, 235, 0.5);
-            color: var(--primary);
-            background: transparent;
-            padding: 0.5rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .carousel .arrows button:hover {
-            background: rgba(37, 99, 235, 0.1);
-        }
-
-        .carousel .arrows .prev {
-            left: 0.5rem;
-        }
-
-        .carousel .arrows .next {
-            right: 0.5rem;
-        }
-
-        .carousel .arrows svg {
-            width: 1.5rem;
-            height: 1.5rem;
-        }
-
-        .carousel .dots {
+        .about {
             display: flex;
             justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .carousel .dots button {
-            width: 0.75rem;
-            height: 0.75rem;
-            border-radius: 9999px;
-            background: rgba(37, 99, 235, 0.3);
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .carousel .dots button:hover {
-            background: rgba(37, 99, 235, 0.5);
-        }
-
-        .carousel .dots .active {
-            background: var(--primary);
-            box-shadow: var(--shadow-neon);
-        }
-
-        /* Why This App Section */
-        .why-this-app {
-            padding: 3rem 1rem;
-            background: rgba(243, 244, 246, 0.5);
-        }
-
-        .why-this-app .card {
-            border: 1px solid rgba(37, 99, 235, 0.3);
-            border-radius: 0.5rem;
-            overflow: hidden;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .why-this-app .card:hover {
-            border-color: rgba(37, 99, 235, 0.6);
-            box-shadow: var(--shadow-neon);
-        }
-
-        .why-this-app .card-header {
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .why-this-app .card-header h2 {
-            font-size: 1.875rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-shadow: var(--shadow-neon);
-        }
-
-        .why-this-app .card-content {
-            padding: 2rem 4rem;
-            min-height: 25rem;
-            display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 1.5rem;
+            padding: 50px 20px;
+            background-color: #1a1f2e;
         }
-
-        .why-this-app p {
-            font-size: 1.125rem;
-            color: var(--muted-foreground);
-            text-align: center;
-            max-width: 48rem;
+        .about img {
+            border-radius: 50%;
+            width: 200px;
+            margin-right: 20px;
         }
-
-        .why-this-app .features {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            width: 100%;
-        }
-
-        @media (min-width: 768px) {
-            .why-this-app .features {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .why-this-app .features {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        .why-this-app .feature {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            padding: 1rem;
-            background: var(--background);
-            border-radius: 0.375rem;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-        }
-
-        .why-this-app .feature svg {
-            width: 1.5rem;
-            height: 1.5rem;
-            color: var(--primary);
-            flex-shrink: 0;
-            margin-top: 0.25rem;
-            text-shadow: var(--shadow-neon);
-        }
-
-        .why-this-app .feature p {
+        .about-text {
             text-align: left;
         }
-
-        .why-this-app .arrows button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            border-radius: 9999px;
-            border: 1px solid rgba(37, 99, 235, 0.5);
-            color: var(--primary);
-            background: transparent;
-            padding: 0.5rem;
+        .about-text h2 {
+            color: #ff4d4d;
+            margin-bottom: 20px;
+        }
+        .info-box {
+            background-color: #2a2f3e;
+            padding: 20px;
+            border: 2px solid #ff4d4d;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .info-box p {
+            margin: 5px 0;
+        }
+        .btn {
+            background-color: #ff4d4d;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background 0.3s;
         }
-
-        .why-this-app .arrows .prev {
-            left: 1rem;
+        .projects {
+            padding: 50px 20px;
         }
-
-        .why-this-app .arrows .next {
-            right: 1rem;
+        .projects h2 {
+            color: #ff4d4d;
+            margin-bottom: 20px;
         }
-
-        /* Testimonials Section */
-        .testimonials {
-            padding: 3rem 1rem;
-            background: var(--background);
+        .project-box {
+            display: inline-block;
+            width: 300px;
+            height: 200px;
+            background-color: #2a2f3e;
+            padding: 20px;
+            margin: 10px;
+            border: 2px solid #ff4d4d;
+            border-radius: 5px;
+            vertical-align: top;
         }
-
-        .testimonials h2 {
-            font-size: 1.875rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-shadow: var(--shadow-neon);
-            margin-bottom: 2.5rem;
-            text-align: center;
-        }
-
-        .testimonials .scroll-container {
-            display: flex;
-            gap: 1.5rem;
-            padding-bottom: 1rem;
-            overflow-x: auto;
-            -ms-overflow-style: none; /* IE and Edge */
-            scrollbar-width: none; /* Firefox */
-        }
-
-        .testimonials .scroll-container::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
-        }
-
-        .testimonials .card {
-            min-width: 17.5rem;
-            flex-shrink: 0;
-            border: 1px solid transparent;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-
-        .testimonials .card:hover {
-            border-color: var(--primary);
-            box-shadow: var(--shadow-neon);
-        }
-
-        .testimonials .card-header {
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .testimonials .avatar {
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 9999px;
-            overflow: hidden;
-        }
-
-        .testimonials .avatar img {
+        .project-box button {
+            background-color: #ff4d4d;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .testimonials .card-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-        }
-
-        .testimonials .rating {
-            display: flex;
-            gap: 0.125rem;
-        }
-
-        .testimonials .rating svg {
-            width: 1.25rem;
-            height: 1.25rem;
-        }
-
-        .testimonials .rating .filled {
-            color: #facc15;
-            fill: #facc15;
-        }
-
-        .testimonials .card-content {
-            padding: 1rem;
-        }
-
-        .testimonials .card-content p {
-            font-style: italic;
-            color: var(--muted-foreground);
-        }
-
-        .testimonials .arrows button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            border-radius: 9999px;
-            border: 1px solid rgba(37, 99, 235, 0.5);
-            color: var(--primary);
-            background: transparent;
-            padding: 0.5rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .testimonials .arrows .prev {
-            left: 0;
-        }
-
-        .testimonials .arrows .next {
-            right: 0;
-        }
-
-        /* Footer */
-        footer {
-            padding: 2rem 0;
-            background: var(--muted);
-            color: var(--muted-foreground);
-            text-align: center;
-        }
-
-        footer p {
-            margin-bottom: 0.25rem;
-        }
-
-        footer .text-sm {
-            font-size: 0.875rem;
         }
     </style>
 </head>
 <body>
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <div class="grid">
-                    <div>
-                        <h1>Unlock Your ICFES Potential</h1>
-                        <p>Your Slogan Here: Master the Pre-ICFES Saber 11 with IAPES Prep. Personalized feedback and expert guidance.</p>
-                        <div class="buttons">
-                            <a href="/login"><button class="login">Login</button></a>
-                            <a href="/register"><button class="register">Register</button></a>
-                        </div>
-                    </div>
-                    <div class="dog">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M11.25 16.25h1.5L12 17z"/>
-                            <path d="M16 14v.5"/>
-                            <path d="M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444a11.702 11.702 0 0 0-.493-3.309"/>
-                            <path d="M8 14v.5"/>
-                            <path d="M8.5 8.5c-.384 1.05-1.083 2.028-2.344 2.5-1.931.722-3.576-.297-3.656-1-.113-.994 1.177-6.53 4-7 1.923-.321 3.651.845 3.651 2.235A7.497 7.497 0 0 1 14 5.277c0-1.39 1.844-2.598 3.767-2.277 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5"/>
-                        </svg>
-                    </div>
-                </div>
+    <header class="header">
+        <h1>Daniel Oliveros</h1>
+        <p>Un Desarrollador Freelance Creativo y Full Stack</p>
+        <div class="scroll-down">Desplázate hacia abajo</div>
+    </header>
+    <section id="about" class="about">
+        <img src="https://via.placeholder.com/200" alt="Daniel Oliveros">
+        <div class="about-text">
+            <h2>Sobre Mí</h2>
+            <p>Mi nombre es Daniel Oliveros. Soy un Desarrollador Full Stack Freelance basado en Nueva York, USA, y estoy muy apasionado y dedicado a mi trabajo. Con 6 años de experiencia como profesional Full Stack Developer, he adquirido las habilidades necesarias para construir grandes y premium websites.</p>
+            <div class="info-box">
+                <p>Nombre: Daniel Andres Oliveros Olmos</p>
+                <p>Edad: 17</p>
+                <p>Teléfono: +57 3012164798</p>
+                <p>Dirección: Medellin, Colombia</p>
+                <p>Experiencia: 2 años de estudio</p>
+                <p>Freelance: Disponible</p>
             </div>
-        </section>
-
-        <!-- Carousel Section -->
-        <section class="carousel">
-            <div class="container">
-                <h2>Discover Our Features</h2>
-                <div class="card">
-                    <div class="card-content">
-                        <img src="https://placehold.co/800x400.png" alt="Interactive Simulations" data-ai-hint="study learning"/>
-                        <div class="overlay">
-                            <h3>Interactive Simulations</h3>
-                            <p>Experience real test conditions with our advanced simulations.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="arrows">
-                    <button class="prev" aria-label="Previous slide">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-                    </button>
-                    <button class="next" aria-label="Next slide">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-                    </button>
-                </div>
-                <div class="dots">
-                    <button class="active" aria-label="Go to slide 1"></button>
-                    <button aria-label="Go to slide 2"></button>
-                    <button aria-label="Go to slide 3"></button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why This App Section -->
-        <section class="why-this-app">
-            <div class="container">
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Why Choose IAPES Prep?</h2>
-                    </div>
-                    <div class="card-content">
-                        <p>IAPES Prep is more than just a test simulator. We are your dedicated partner in achieving success in the ICFES Saber 11 exam. Our platform is designed to provide you with the tools, insights, and support you need to excel.</p>
-                        <div class="features">
-                            <div class="feature">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                <p>Realistic ICFES Saber 11 simulations.</p>
-                            </div>
-                            <div class="feature">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                <p>AI-powered personalized feedback to pinpoint improvement areas.</p>
-                            </div>
-                            <div class="feature">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                <p>Comprehensive question bank covering all subjects.</p>
-                            </div>
-                            <div class="feature">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                <p>Track your progress with detailed analytics.</p>
-                            </div>
-                            <div class="feature">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                <p>Flexible study plans tailored to your needs.</p>
-                            </div>
-                            <div class="feature">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                <p>User-friendly interface accessible on all devices.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="arrows">
-                        <button class="prev" aria-label="Previous panel"></button>
-                        <button class="next" aria-label="Next panel"></button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="testimonials">
-            <div class="container">
-                <h2>What Our Users Say</h2>
-                <div class="scroll-container">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="avatar">
-                                <img src="https://placehold.co/40x40.png" alt="Laura V." data-ai-hint="person woman"/>
-                            </div>
-                            <div>
-                                <h3 class="card-title">Laura V.</h3>
-                                <div class="rating">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <p>"IAPES Prep helped me identify my weaknesses and improve my scores significantly. The AI feedback is amazing!"</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="avatar">
-                                <img src="https://placehold.co/40x40.png" alt="Carlos R." data-ai-hint="person man"/>
-                            </div>
-                            <div>
-                                <h3 class="card-title">Carlos R.</h3>
-                                <div class="rating">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <p>"The simulations are very realistic. I felt much more confident on test day. Highly recommend this platform."</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="avatar">
-                                <img src="https://placehold.co/40x40.png" alt="Sofia M." data-ai-hint="person student"/>
-                            </div>
-                            <div>
-                                <h3 class="card-title">Sofia M.</h3>
-                                <div class="rating">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <p>"An excellent tool for ICFES preparation. The content is thorough and the platform is easy to use."</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="avatar">
-                                <img src="https://placehold.co/40x40.png" alt="Juan P." data-ai-hint="person male"/>
-                            </div>
-                            <div>
-                                <h3 class="card-title">Juan P.</h3>
-                                <div class="rating">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="filled"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.431 8.332 1.151-6 5.873 1.416 8.262L12 18.87l-7.416 3.434L6 15.042l-6-5.873 8.332-1.151z"/></svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <p>"Great value for money. The personalized recommendations made a huge difference in my study strategy."</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="arrows">
-                    <button class="prev" aria-label="Previous testimonial"></button>
-                    <button class="next" aria-label="Next testimonial"></button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-            <div class="container">
-                <p>© 2025 IAPES Prep. All rights reserved.</p>
-                <p class="text-sm">Your partner for ICFES Saber 11 success.</p>
-            </div>
-        </footer>
-    </main>
+            <button class="btn">Descargar CV</button>
+        </div>
+    </section>
+    <section id="projects" class="projects">
+        <h2>Mis Proyectos</h2>
+        <div class="project-box">
+            <span style="color: #ff4d4d;">💻</span>
+            <h3>Proyecto_IAPES</h3>
+            <p>Descripción del proyecto 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <button onclick="window.location.href='https://github.com/DanielOliverosO/Proyecto_IAPES.git'">Ver Más</button>
+        </div>
+        <div class="project-box">
+            <span style="color: #ff4d4d;">💻</span>
+            <h3>GalagaInem</h3>
+            <p>Descripción del proyecto 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <button onclick="window.location.href='https:https://github.com/DanielOliverosO/GalagaInem.git'">Ver Más</button>
+        </div>
+    </section>
 </body>
 </html>
